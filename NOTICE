@@ -1,0 +1,22 @@
+AstrBot Media Parser RC2
+Based on drdon1234/astrbot_plugin_media_parser
+Public baseline c16a938128014403057f1deeeaedecbd1fc15707.
+Original authorship, AGPL-3.0 license and metadata are retained.
+
+Bilibili av2bv is replaced locally with a positional Python adaptation of
+Colerar/abv, commit fbbd2befe845e2860b3cdf83e3e8c4b52ffd9439 (2022-10-29).
+Copyright (c) 2022 Colerar. MIT license: LICENSES/Colerar-MIT.txt.
+https://github.com/Colerar/abv/tree/fbbd2befe845e2860b3cdf83e3e8c4b52ffd9439
+The old referenced example is removed, including its function docstring link.
+New adaptation uses fixed base-58 powers, preserves the av: int -> str API
+and zero behavior, and explicitly rejects invalid types and out-of-range values.
+
+douyin_sign.py retains its original Apache-2.0 header and F2 attribution.
+F2: Johnserf-Seed/f2, f2/utils/abogus.py; credited author JohnserfSeed.
+Reviewed F2 reference: 8ae164d8222c9263d946c74764aeb5a2682d73a8;
+the plugin header does not identify its exact donor revision.
+LICENSES/Apache-2.0.txt and LICENSES/F2-Apache-2.0.txt are supplied.
+The inspected F2 tree contained no separate NOTICE. This new NOTICE preserves
+attribution; it is not an original upstream F2 NOTICE.
+Earlier embedded SM3 authorship remains unverified; no unrelated gmssl
+implementation or copyright claim is substituted.
