@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.1.0-oss (release candidate, 2026-10-27)
+
+- Align plugin metadata and registration version to 0.1.0; the candidate tag names the downstream release channel.
+- Update documentation with scoped host, parser and offline evidence and unresolved QQ delivery limits.
+- Version and documentation synchronization only; no Douyin fix patch.
+
 ## Documentation update — 2026-10-27
 
 - Rework GitHub README into a Chinese-first project overview with a brief English summary.

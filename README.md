@@ -11,7 +11,7 @@
 
 **中文** · [English](#english-overview) · [安装](#快速安装) · [贡献](CONTRIBUTING.md) · [许可](#原作者与许可证)
 
-基于 **[drdon1234/astrbot_plugin_media_parser](https://github.com/drdon1234/astrbot_plugin_media_parser)** 的衍生版本，保留上游原作者和 AGPL-3.0 许可证。此仓库分享可再发行的公开代码，**不是**腾讯云 QQ 机器人生产环境的完整备份。
+基于 **[drdon1234/astrbot_plugin_media_parser](https://github.com/drdon1234/astrbot_plugin_media_parser)** 的衍生版本，保留上游原作者和 AGPL-3.0 许可证。本衍生版由 **mgws2** 维护。此仓库分享可再发行的公开代码，**不是**腾讯云 QQ 机器人生产环境的完整备份。
 
 ## ✨ 主要功能
 
@@ -44,10 +44,14 @@
 | 项目 | 状态 |
 | --- | --- |
 | Python 语法 / 相对导入 | 67 个文件语法通过；191 处导入引用检查通过 |
-| 离线测试 | **53 PASS / 0 FAIL**（2026-10-27，AstrBot 宿主使用测试替身） |
+| 离线测试 | **53 PASS / 0 FAIL / 16 NOT_APPLICABLE**（2026-10-27，Python 3.11，真实依赖及 AstrBot 宿主测试替身） |
 | 公开源码 / 候选 ZIP 敏感扫描 | 通过限定规则扫描 |
-| 真实 AstrBot 启动、QQ 收发、平台在线解析 | **尚未完整验证** |
+| 独立真实宿主 | AstrBot **4.27.4 / Python 3.12.13** 启动、插件加载、配置初始化及 `auto_parse` 注册 PASS |
+| 在线解析器 | B 站公开样例两次非空；抖音新样例通过；旧样例详情接口 HTTP 403 且网页回退无结果，根因 UNKNOWN（仅解析器层） |
+| 宿主回退 / QQ 发送 | 真实宿主事件配合本地记录器四种配置 PASS；真实 QQ 消息投递 **NOT_TESTED** |
 | 抖音浏览器侧车、私有 Worker、生产专用修复 | **未包含** |
+
+内部插件版本为 `0.1.0`；候选标签 `v0.1.0-oss` 标识本衍生版发布渠道。此版本低于上游遗留的 `7.0.0`，已有安装的自动升级识别尚未验证，应先在独立实例检查。仅富媒体模式下，即使关闭显示原始链接，失败文本仍会包含链接。
 
 公开版基于上游 [c16a938](https://github.com/drdon1234/astrbot_plugin_media_parser/commit/c16a938128014403057f1deeeaedecbd1fc15707)。其中 B 站 AV→BV 转换函数采用带 MIT 署名的参考实现局部适配。B 站仍可能遇到 HTTP 412；某些错误诊断包含远端响应文本片段，公开日志前务必脱敏。真实功能是否可用以用户实际环境为准。
 
@@ -73,6 +77,6 @@
 
 An **attributed modified distribution** of [drdon1234/astrbot_plugin_media_parser](https://github.com/drdon1234/astrbot_plugin_media_parser) for AstrBot 4.x. Includes configurable parsing modules for 11 platforms, chat triggers, text/media output and rate controls.
 
-**Verification:** 53 offline cases passed on 2026-10-27 with real Python dependencies and explicit AstrBot host substitutes. Live platform parsing, QQ delivery and host lifecycle **have not** been fully verified for this public snapshot. Browser sidecar and private production extensions are excluded.
+**Verification:** AstrBot 4.27.4 on Python 3.12.13 started and loaded the plugin, initialized configuration, and registered `auto_parse`. Bilibili and one Douyin sample passed at parser level; an older Douyin sample returned HTTP 403 and has an unknown root cause. Host-event fallback passed with a local recorder; real QQ delivery is NOT_TESTED. Python 3.11 offline regression: 53 PASS, 0 FAIL, 16 NOT_APPLICABLE with AstrBot substitutes. Browser sidecar and private production extensions are excluded.
 
 Read the [installation guide](#快速安装), [contribution guide](CONTRIBUTING.md), and [license notices](NOTICE).
